@@ -24,15 +24,15 @@ images = images/255
 # =============================================================================
 #     CODE CHUNK TO TRANSFORM TARGET
 # =============================================================================
-target = pd.read_csv('data/train.csv')
-rle_mask = target.rle_mask.str.split(' ')
+target_csv = pd.read_csv('data/train.csv')
+rle_mask = target_csv.rle_mask.str.split(' ')
 
-matrix = np.zeros((4000, 10201))
+target = np.zeros((4000, 10201))
 for i in range(1,4000):
     if(type(rle_mask[i]) != float):
         for j in range(0, len(rle_mask[i]), 2):
             initio = int(rle_mask[i][j]) - 1
             finale =  initio + int(rle_mask[i][j + 1])
-            matrix[i, initio:finale] = 1
+            target[i, initio:finale] = 1
             
             
