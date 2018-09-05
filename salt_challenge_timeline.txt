@@ -1,0 +1,11 @@
+###################
+# SALT_PROJECT
+###################
+
+	05/09/2018
+Two files containing the training data has been created. 
+ - "images.npy" contains each image as a row, images has been converted into an
+  array of floats representing grey tonalities.
+ - "targets.npy" contains the covers (or targets) of each images, codified as
+  0s or 1s.
+   
