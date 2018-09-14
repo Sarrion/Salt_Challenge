@@ -8,4 +8,14 @@ Two files containing the training data has been created.
   array of floats representing grey tonalities.
  - "targets.npy" contains the covers (or targets) of each images, codified as
   0s or 1s.
+  
+    11/09/2018
+One script called "neuralTry1.py" that builds a NN has been coded.
    
+    12/09/2018
+A first tensorboard has been utilized, we can do that by creating a logfile and 
+reading it by means of cmd command:
+    tensorboard --logdir=C:\Users\avicent\Documents\GitHub\Salt_Challenge\logs
+     --host=127.0.0.1
+Then, we can open the tensorboard by introducing the address returned in a web
+browser.
