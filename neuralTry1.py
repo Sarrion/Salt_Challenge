@@ -17,16 +17,16 @@ x_vals_test = images[test_indx,:]
 y_vals_train = targets[train_indx,:]
 y_vals_test = targets[test_indx,:]
 
-x_data = tf.placeholder(shape = [1,10201], dtype = tf.float32)
-y_target = tf.placeholder(shape = [1,10201], dtype = tf.float32)
+x_data = tf.placeholder(shape = [1,10201], dtype = tf.float32, name = "x-input")
+y_target = tf.placeholder(shape = [1,10201], dtype = tf.float32, name = "y-input")
 
-W1 = tf.Variable(tf.random_normal(shape = [10201, 102]))
-b1 = tf.Variable(tf.random_normal(shape = [102]))
-W2 = tf.Variable(tf.random_normal(shape = [102, 10201]))
-b2 = tf.Variable(tf.random_normal(shape = [10201]))
+W1 = tf.Variable(tf.random_normal(shape = [10201, 102]), name = "Weights1")
+b1 = tf.Variable(tf.random_normal(shape = [102]), name = "biases1")
+W2 = tf.Variable(tf.random_normal(shape = [102, 10201]), name = "Weights2")
+b2 = tf.Variable(tf.random_normal(shape = [10201]), name = "biases2")
 
-layer1 = tf.nn.relu(tf.add(tf.matmul(x_data, W1), b1))
-layerOutput = tf.add(tf.matmul(layer1, W2), b2)
+layer1 = tf.nn.relu(tf.add(tf.matmul(x_data, W1), b1), name = "Layer1")
+layerOutput = tf.add(tf.matmul(layer1, W2), b2, name = "LayerOutput")
 
 loss = tf.reduce_mean(tf.losses.sigmoid_cross_entropy(layerOutput, y_target))   
 optimizer = tf.train.AdamOptimizer(learning_rate = 0.001,
