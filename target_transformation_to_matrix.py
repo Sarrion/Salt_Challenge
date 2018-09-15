@@ -4,11 +4,14 @@ Created on Tue Sep  4 11:42:57 2018
 
 @author: avicent
 """
+
+'''
 import os
 from PIL import Image
 import numpy as np
 import pandas as pd
 #import math
+'''
 
 # =============================================================================
 #     CODE CHUNK TO TRANSFORM TRAIN IMAGES

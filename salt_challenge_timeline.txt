@@ -19,3 +19,16 @@ reading it by means of cmd command:
      --host=127.0.0.1
 Then, we can open the tensorboard by introducing the address returned in a web
 browser.
+
+    15/09/2018
+A new folder called "models" has been created. This folder will save generated
+models and the code that generates them. The code used to save models is:
+    saver = tf.train.Saver()
+    saver.save(sess, "./models/model1/model1.ckpt")
+To recover a model we can use:
+    saver = tf.train.Saver()
+    saver.restore(sess, "./models/model1/model1.ckpt")
+More information in: "https://www.tensorflow.org/guide/saved_model".
+
+An error during model3training has been occured, see the "model3_code.py" file 
+in "./Salt_Challenge/models/model3".
