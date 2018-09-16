@@ -30,5 +30,10 @@ To recover a model we can use:
     saver.restore(sess, "./models/model1/model1.ckpt")
 More information in: "https://www.tensorflow.org/guide/saved_model".
 
-An error during model3training has been occured, see the "model3_code.py" file 
+An error during model3 training has been occured, see the "model3_code.py" file 
 in "./Salt_Challenge/models/model3".
+
+    16/09/2018
+Regenerated model3 without the problem, this was because there was less test 
+data than training data, and within the loop the testLoss couldn´t be generated
+from iteration 800.

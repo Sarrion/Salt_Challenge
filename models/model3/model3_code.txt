@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 13 15:00:19 2018
-
-@author: avicent
-"""
 import os
 from PIL import Image
 import numpy as np
@@ -35,15 +29,11 @@ W3 = tf.Variable(tf.random_normal(shape = [10201, 10201], dtype = tf.float32), n
 b3 = tf.Variable(tf.random_normal(shape = [10201], dtype = tf.float32), name = "biases3")
 W4 = tf.Variable(tf.random_normal(shape = [10201, 10201], dtype = tf.float32), name = "Weights4")
 b4 = tf.Variable(tf.random_normal(shape = [10201], dtype = tf.float32), name = "biases4")
-W5 = tf.Variable(tf.random_normal(shape = [10201, 10201], dtype = tf.float32), name = "Weights5")
-b5 = tf.Variable(tf.random_normal(shape = [10201], dtype = tf.float32), name = "biases5")
-
 
 layer1 = tf.nn.relu(tf.add(tf.matmul(x_data, W1), b1), name = "Layer1")
 layer2 = tf.nn.relu(tf.add(tf.matmul(layer1, W2), b2), name = "Layer2")
 layer3 = tf.nn.relu(tf.add(tf.matmul(layer2, W3), b3), name = "Layer3")
-layer4 = tf.nn.relu(tf.add(tf.matmul(layer3, W4), b4), name = "Layer4")
-layerOutput = tf.add(tf.matmul(layer4, W5), b5, name = "LayerOutput")
+layerOutput = tf.add(tf.matmul(layer3, W4), b4, name = "LayerOutput")
 
 loss = tf.reduce_mean(tf.losses.sigmoid_cross_entropy(layerOutput, y_target))   
 optimizer = tf.train.AdamOptimizer(learning_rate = 0.001,
@@ -71,6 +61,80 @@ for i in range(len(x_vals_train)):
         print('Gen: ' + str(i + 1) + '. trainLoss = ' + str(temp_loss))
 #        + '   testLoss = ' + str(temp_test_loss))
         
-tf.train.Saver().save(sess, "./models/model4/model4.ckpt")
-tf.summary.FileWriter('./models/model4/logs/', sess.graph)
+tf.train.Saver().save(sess, "./models/model3/model3.ckpt")
+tf.summary.FileWriter('./models/model3/logs/', sess.graph)
 sess.close()
+
+
+
+
+
+
+
+
+''' OUTPUT:
+Gen: 50. trainLoss = 0.6931472
+Gen: 100. trainLoss = 0.6931472
+Gen: 150. trainLoss = -1609546800000000.0
+Gen: 200. trainLoss = -744726660000000.0
+Gen: 250. trainLoss = -18094982000000.0
+Gen: 300. trainLoss = -4607454000000000.0
+Gen: 350. trainLoss = 0.6931472
+Gen: 400. trainLoss = 0.6931472
+Gen: 450. trainLoss = 0.6931472
+Gen: 500. trainLoss = -1812393900000000.0
+Gen: 550. trainLoss = -2418284000000000.0
+Gen: 600. trainLoss = -398905360000000.0
+Gen: 650. trainLoss = 0.6931472
+Gen: 700. trainLoss = -6193877600000000.0
+Gen: 750. trainLoss = 0.6931472
+Gen: 800. trainLoss = 0.6931472
+Gen: 850. trainLoss = -2996922500000.0
+Gen: 900. trainLoss = -3664059400000000.0
+Gen: 950. trainLoss = -704600700000000.0
+Gen: 1000. trainLoss = 0.6931472
+Gen: 1050. trainLoss = -8487963000000000.0
+Gen: 1100. trainLoss = 0.6931472
+Gen: 1150. trainLoss = -1.8865249e+16
+Gen: 1200. trainLoss = -3143428300000000.0
+Gen: 1250. trainLoss = 0.6931472
+Gen: 1300. trainLoss = 0.6931472
+Gen: 1350. trainLoss = -4391931000000000.0
+Gen: 1400. trainLoss = -240078420000000.0
+Gen: 1450. trainLoss = -1.9830708e+16
+Gen: 1500. trainLoss = -4.581678e+16
+Gen: 1550. trainLoss = -628783500000000.0
+Gen: 1600. trainLoss = -1.9925444e+16
+Gen: 1650. trainLoss = 0.6931472
+Gen: 1700. trainLoss = -2.6770452e+16
+Gen: 1750. trainLoss = 0.6931472
+Gen: 1800. trainLoss = -3830498000000000.0
+Gen: 1850. trainLoss = 0.6931472
+Gen: 1900. trainLoss = 0.6931472
+Gen: 1950. trainLoss = 0.6931472
+Gen: 2000. trainLoss = 0.6931472
+Gen: 2050. trainLoss = 0.6931472
+Gen: 2100. trainLoss = -3.5625482e+16
+Gen: 2150. trainLoss = -1.0422746e+16
+Gen: 2200. trainLoss = -8.9769335e+16
+Gen: 2250. trainLoss = 0.6931472
+Gen: 2300. trainLoss = 0.6931472
+Gen: 2350. trainLoss = 0.6931472
+Gen: 2400. trainLoss = -4132271300000000.0
+Gen: 2450. trainLoss = 0.6931472
+Gen: 2500. trainLoss = -7.1481845e+16
+Gen: 2550. trainLoss = -1.0623943e+16
+Gen: 2600. trainLoss = -1.5092336e+17
+Gen: 2650. trainLoss = -10295198000000.0
+Gen: 2700. trainLoss = -1.2866383e+16
+Gen: 2750. trainLoss = -1.4839377e+17
+Gen: 2800. trainLoss = -1.5622209e+16
+Gen: 2850. trainLoss = -1.0078052e+17
+Gen: 2900. trainLoss = -1.0016272e+17
+Gen: 2950. trainLoss = -3.1891094e+17
+Gen: 3000. trainLoss = -7.016946e+16
+Gen: 3050. trainLoss = 0.6931472
+Gen: 3100. trainLoss = -1.13874985e+17
+Gen: 3150. trainLoss = 0.6931472
+Gen: 3200. trainLoss = -3.9736887e+16
+'''
